@@ -18,27 +18,25 @@ type BadAnswer {
     buttons: [ButtonGoBack!]
 }
 
-type ReplyText {
+interface Reply {
+    type: String!
+}
+
+type ReplyText implements Reply {
     type: String!
     content: String!
 }
-type ReplyCards {
+type ReplyCards implements Reply {
     type: String!
     content: [LabCards!]
 }
-type ReplyBad {
+type ReplyBad implements Reply {
     type: String!
     content: BadAnswer!
 }
-type Reply {
-    replies: [DifferentReplies]
+type ReplyAnswer {
+    replies: [Reply]
 }
-type ReplyQuestion {
-    replies: [ReplyText]
-}
-
-
-union DifferentReplies = ReplyText | ReplyCards | ReplyBad
 
 input Question {
     type: String!
@@ -56,6 +54,6 @@ export const botQueries = `
 `;
 
 export const botMutations = `
-    saveQuestion(question: Question): ReplyQuestion!
-    getLabs(city: City): Reply!
+    saveQuestion(question: Question): ReplyAnswer!
+    getLabs(city: City): ReplyAnswer!
 `;

@@ -4,6 +4,21 @@ import { url, port_bot, entryPoint_bot } from './server';
 const URL = `http://${url}:${port_bot}/${entryPoint_bot}`;
 
 const resolvers = {
+	Reply: {
+		__resolveType(obj, args, context, info){
+			if(obj.type === 'quickReplies') {
+				return 'ReplyBad'
+			}
+			if (obj.type === 'carousel'){
+				return 'ReplyCards'
+			}
+			if (obj.type === 'text'){
+				return 'ReplyText'
+			}
+			return null;
+		}
+	},
+
 	Query: {
 		allCourses: (_) =>
 			getRequest(URL, ''),
