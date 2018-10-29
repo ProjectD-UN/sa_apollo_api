@@ -33,25 +33,29 @@ type ReplyBad {
 type Reply {
     replies: [DifferentReplies]
 }
+type ReplyQuestion {
+    replies: [ReplyText]
+}
+
 
 union DifferentReplies = ReplyText | ReplyCards | ReplyBad
 
-type Question {
+input Question {
     type: String!
     email: String!
     question: String!
 }
-type City {
+input City {
     city: String!
 }
 `;
 
-// export const botQueries = `
-//     allCourses: [Course]!
-//     courseByCode(code: Int!): Course!
-// `;
+export const botQueries = `
+    allCourses: [ButtonGoBack]!
+    courseByCode(code: Int!): ButtonGoBack!
+`;
 
 export const botMutations = `
-    saveQuestion(question: Question): Reply!
+    saveQuestion(question: Question): ReplyQuestion!
     getLabs(city: City): Reply!
 `;

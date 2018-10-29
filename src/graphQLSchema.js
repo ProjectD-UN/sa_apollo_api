@@ -6,7 +6,7 @@ import { mergeSchemas } from './utilities';
 
 import {
 	botMutations,
-	// coursesQueries,
+	botQueries,
 	botTypeDef
 } from './bot/typeDefs';
 
@@ -17,6 +17,9 @@ const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
 		botTypeDef
+	],
+	[
+		botQueries
 	],
 	[
 		botMutations

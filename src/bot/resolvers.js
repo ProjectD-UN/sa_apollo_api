@@ -1,7 +1,7 @@
 import { generalRequest, getRequest } from '../utilities';
-import { url, port, entryPoint } from './server';
+import { url, port_bot, entryPoint_bot } from './server';
 
-const URL = `http://${url}:${port}/${entryPoint}`;
+const URL = `http://${url}:${port_bot}/${entryPoint_bot}`;
 
 const resolvers = {
 	Query: {
@@ -12,9 +12,9 @@ const resolvers = {
 	},
 	Mutation: {
 		saveQuestion: (_, {question}) =>
-			generalRequest(`${URL}/questions`, 'POST', question),
+			generalRequest(`${URL}questions`, 'POST', question),
 		getLabs: (_, {city}) =>
-			generalRequest(`${URL}/labs/search`, 'POST', city)
+			generalRequest(`${URL}labs/search`, 'POST', city)
 
 
 
