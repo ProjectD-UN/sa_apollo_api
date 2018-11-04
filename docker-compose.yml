@@ -13,5 +13,7 @@ services:
       API_URL: '35.196.126.118'
       BOT_PORT: '3000'
       BOT_ENTRY: 'api/'
+      NEWS_URL: '35.231.237.201'
+      NEWSLETTER_PORT: '3002'
     ports:
       - '5000:5000'
