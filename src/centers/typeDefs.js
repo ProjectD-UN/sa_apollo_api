@@ -1,7 +1,7 @@
 export const centersTypeDef = `
 input Center {
     name: String!    
-    email: String!
+    email: String
     city: String!
     address: String!
     lat: Float!
@@ -10,7 +10,7 @@ input Center {
 type CenterCreated {
     code: Int!
     name: String!    
-    email: String!
+    email: String
     city: String!
     address: String!
     lat: Float!
@@ -21,7 +21,7 @@ type CenterCreated {
 
 export const centersQueries = `
     allCenters: [CenterCreated]!
-    centerById: CenterCreated
+    centerById(code:Int!): CenterCreated
 `;
 
 export const centersMutations = `
