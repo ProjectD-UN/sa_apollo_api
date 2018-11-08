@@ -1,0 +1,32 @@
+mutation{
+  getLabs(city:{city:"Bogotá"}){
+    replies{
+      type
+      ...on ReplyBad{
+        bad: content{
+          title
+        }
+      }
+      ...on ReplyCards{
+        cards: content{
+          title
+          subtitle
+        }
+      }
+      ...on ReplyText{
+        text:content
+      }
+    }
+  }
+}
+
+
+{
+	"query": "mutation($user: User!){saveUser(user: $user) {id, name, email}}",
+	"variables": { "user":{"email": "abcd@unal.com", "name": "abc" } }
+}
+
+{
+	"query": "mutation($city: City!){getLabs(city: $city) {replies{type,...on ReplyBad{bad: content{title}},...on ReplyCards{cards: content{title,subtitle}},...on ReplyText{text: content}}}}",
+	"variables": { "city":{"city":"London"} }
+}
