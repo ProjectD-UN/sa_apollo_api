@@ -33,6 +33,7 @@ const graphql = graphqlKoa((ctx) => ({
 	context: { token: ctx.state.token },
 	formatError: formatErr
 }));
+
 router.post('/graphql', koaBody(), graphql);
 router.get('/graphql', graphql);
 

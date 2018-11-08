@@ -3,11 +3,10 @@ services:
   academy-api:
     build: .
     environment:
-      # PORT: '5000'
-      # SHOW_URLS: 'true'
-      # COURSES_URL: '192.168.99.101'
-      # COURSES_PORT: '3000'
-      # COURSES_ENTRY: 'courses-ms/resources/courses'
+      SHOW_URLS: 'true'
+      CENTERS_URL: '35.227.44.194'
+      CENTERS_PORT: '3000'
+      CENTERS_ENTRY: 'courses-ms/resources/courses'
       PORT: '5000'      
       SHOW_URLS: 'true'
       API_URL: '35.196.126.118'
