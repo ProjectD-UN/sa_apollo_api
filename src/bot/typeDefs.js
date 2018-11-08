@@ -35,16 +35,18 @@ type ReplyBad implements Reply {
     content: BadAnswer!
 }
 type ReplyAnswer {
-    replies: [Reply]
+    messages: [Reply]
 }
 
 input Question {
     type: String!
     email: String!
     question: String!
+    id: String!
 }
 input City {
     city: String!
+    id: String!
 }
 `;
 
