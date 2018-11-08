@@ -12,7 +12,9 @@ const resolvers = {
 	},
 	Mutation: {
 		saveUser: (_, {user}) =>
-			generalRequest(`${URL}users`, 'POST', user)
+			generalRequest(`${URL}users`, 'POST', user),
+		saveUserTopic: (_, {userTopic}) =>
+			generalRequest(`${URL}users`, 'POST', userTopic)
 	}
 
 };
