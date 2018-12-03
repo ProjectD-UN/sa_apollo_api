@@ -20,6 +20,34 @@ mutation{
   }
 }
 
+mutation{
+  loginUser(login:{
+    email: "diefrodriguezcha@unal.edu.co"
+    password: "apollo"
+  }){
+    auth
+    ...on Token {
+      token
+      expiresIn
+    }
+    ...on FailedToken {
+      message
+    }
+  }
+}
+
+mutation{
+  registerUser(user: {
+    name: "Diego Rodriguez"
+    email: "diefrodriguezcha@unal.edu.co"
+    password: "apollo"
+  }){
+    auth
+    token
+    expiresIn
+  }
+}
+
 
 {
 	"query": "mutation($user: User!){saveUser(user: $user) {id, name, email}}",

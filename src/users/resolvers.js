@@ -4,6 +4,15 @@ import { url, user_port, entryPoint_user } from './server';
 const URL = `http://${url}:${user_port}/${entryPoint_user}`;
 
 const resolvers = {
+	ReplyUsers: {
+		__resolveType(obj, args, context, info){
+			if(obj.auth === true) {
+				return 'Token'
+			} else {
+				return 'FailedToken'
+			}						
+		}
+	},
 	Query: {
 		me: (_) =>
 			getRequest(`${URL}/me`, '')		

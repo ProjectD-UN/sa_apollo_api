@@ -8,23 +8,24 @@ input Login {
     email: String!
     password: String!
 }
-type Token {
+interface ReplyUsers {
+    auth: Boolean!
+}
+type Token implements ReplyUsers {
     auth: Boolean!
     token: String!
     expiresIn: Int!
 }
-type FailedToken {
-    auth: Boolean
-    token: String    
+type FailedToken implements ReplyUsers {
+    auth: Boolean!
+    message: String!    
 }
 type Me {
     id: String
     name: String!
     email: String!
-    v: Int!
+    v: Int
 }
-
-union LoginResult = Token | FailedToken
 `;
 
 export const usersQueries = `
@@ -33,5 +34,5 @@ export const usersQueries = `
 
 export const usersMutations = `
     registerUser(user: UserRegistration): Token
-    loginUser(login: Login): LoginResult
+    loginUser(login: Login): ReplyUsers
 `;
