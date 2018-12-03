@@ -1,5 +1,5 @@
 export const usersTypeDef = `
-input User {
+input UserRegistration {
     name: String!
     email: String!
     password: String!    
@@ -18,10 +18,10 @@ type FailedToken {
     token: String    
 }
 type Me {
-    _id: String
+    id: String
     name: String!
     email: String!
-    __v: Int!
+    v: Int!
 }
 
 union LoginResult = Token | FailedToken
@@ -32,6 +32,6 @@ export const usersQueries = `
 `;
 
 export const usersMutations = `
-    registerUser(user: User): Token
+    registerUser(user: UserRegistration): Token
     loginUser(login: Login): LoginResult
 `;
