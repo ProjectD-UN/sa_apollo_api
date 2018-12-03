@@ -7,7 +7,7 @@ import { mergeSchemas } from './utilities';
 import {
 	botMutations,
 	botQueries,
-	botTypeDef
+	botTypeDef	
 } from './bot/typeDefs';
 import botResolvers from './bot/resolvers';
 
@@ -25,18 +25,25 @@ import {
 } from './centers/typeDefs';
 import centersResolvers from './centers/resolvers';
 
+import {
+	usersMutations,
+	usersQueries,
+	usersTypeDef	
+} from './users/typeDefs';
+import usersResolvers from './users/resolvers';
+
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
 	[
 		'scalar JSON',
-		botTypeDef,newsletterTypeDef,centersTypeDef
+		botTypeDef,newsletterTypeDef,centersTypeDef, usersTypeDef
 
 	],
 	[
-		botQueries,newsletterQueries,centersQueries
+		botQueries,newsletterQueries,centersQueries, usersQueries
 	],
 	[
-		botMutations,newsletterMutations,centersMutations
+		botMutations,newsletterMutations,centersMutations, usersMutations
 	]
 );
 
@@ -47,6 +54,7 @@ export default makeExecutableSchema({
 		{ JSON: GraphQLJSON }, // allows scalar JSON
 		botResolvers,
 		newsletterResolvers,
-		centersResolvers
+		centersResolvers,
+		usersResolvers
 	)
 });
